@@ -1,0 +1,17 @@
+<h1>
+  <u>Author information:</u></br>
+  <p><ul>
+    <li>name: <%=@author.author%></li>
+    <li>books written:</br>
+        <%@author.books.each do |b|%>
+          =>Title: <%= link_to b.title, book_path(b)%>,
+            library:
+          <%=link_to b.library.lib_name, library_path(b.library)%></br>
+        <% end %>
+    </li>
+  </ul></p>
+</h1>
+<h2>
+  <%=link_to 'edit author', edit_author_path(@author)%> |
+  <%=link_to 'delete author', author_path(@author), data: {turbo_method: :delete, turbo_confirm: "Are you sure, this action will delete all the books associated with author."}%>
+</h2>

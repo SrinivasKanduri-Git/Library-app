@@ -1,0 +1,7 @@
+<h1>Books in <%=@library.lib_name%>:</h1>
+<%for b in @library.books do %>
+<ul>
+  <li><%=link_to "#{b.title}, By #{b.author.author}", book_path(b)%></li>
+</ul>
+<%end%>
+<h2> <%=link_to "Add new book", new_book_path(library_id: @library.id)%> </h2>

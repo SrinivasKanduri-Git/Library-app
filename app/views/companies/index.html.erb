@@ -1,0 +1,16 @@
+<h1>
+  <p>Welcome to the libraries application, <%= link_to 'Our authors', authors_path%> |
+    <%= link_to 'Our libraries', libraries_path%></p>
+  List of available companies:
+</h1>
+<%@companies.each do |comp|%>
+  <ul>
+    <li><strong><%=link_to comp.company_name, company_path(comp)%></strong></li>
+  </ul>
+<%end%>
+<h2>
+  <%=link_to 'Add a new company', new_company_path%> |
+  <%=link_to 'Add new author', new_author_path%> |
+  <%=link_to 'Add new book', new_book_path%> |
+  <%=link_to 'Add new region', new_region_path%>
+</h2>

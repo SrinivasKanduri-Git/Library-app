@@ -1,0 +1,9 @@
+<h1>
+  locations in <%=@region.region%> region:</br>
+  <%@region.locations.each do |l|%>
+    <ul>
+      <li><%= link_to l.location, location_path(l)%></li>
+    </ul>
+  <%end%>
+  <%=link_to 'Add new location', new_location_path(region_id: @region.id)%>
+</h1>

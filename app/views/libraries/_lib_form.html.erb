@@ -1,0 +1,24 @@
+<%unless @company == nil%>
+  <%=form_for @library do |form|%>
+    <%=form.label "Name:"%>
+    <%=form.text_field :lib_name%></br>
+      <div data-controller="form-element">
+        <%= form.button "Validate", formaction: new_library_path(@company.id), formmethod: :get,
+        data: { turbo_frame: :location_field, form_element_target: "submitbtn"} %>
+        <%= form.label "Regions:"%>
+        <%= form.collection_select :region_ids, @company.regions.order(:region),:id,:region,
+        {include_blank: "select a region", include_hidden: false}, { multiple: true, data: { action: "change->form-element#remotesubmit"} } %>
+      </div>
+
+    <%= turbo_frame_tag :location_field do %>
+      <%unless @region == nil%>
+        <% @region.each do |reg|%>
+          <%= form.label "Locations in #{reg.region} region:"%>
+          <%= form.collection_select :location_ids, reg.locations.order(:location),:id,:location,
+          {include_blank: "select a location", include_hidden: false}, { multiple: true } %></br>
+        <% end %>
+      <%end%>
+    <% end %>
+    <%=form.submit%>
+  <%end%>
+<% end %>

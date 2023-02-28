@@ -1,0 +1,10 @@
+<h1>
+  <u>Available authors:</u></br>
+  <%@authors.each do |a|%>
+    <ul>
+      <li><%=link_to a.author, author_path(a)%></li>
+    </ul>
+  <% end %>
+</h1>
+
+<h2><%=link_to 'Add new author', new_author_path%></h2>

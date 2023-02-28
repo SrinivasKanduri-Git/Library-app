@@ -1,0 +1,11 @@
+<h1>
+  <u>Library details:</u></br>
+  name: <%=@library.lib_name%></br>
+    <%if @library.books.any?%>
+    <%=link_to 'Books', books_path(library_id: @library.id)%></br>
+    <%else%>
+    Library is empty, <%= link_to ' Add books to library', new_book_path(library_id: @library.id)%></br>
+    <% end %>
+  <%=link_to 'Edit library', edit_library_path%> |
+  <%= link_to 'delete library', library_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure, this action will also delete the books associated with it."}%>
+</h1>

@@ -1,0 +1,8 @@
+<%=render 'shared/errors', obj: @library%>
+
+<h1>Edit the library</h1>
+<%=form_with(model: @library, local: true) do |f|%>
+  <%=f.label :library%>
+  <%=f.text_field :lib_name%>
+  <%=f.submit%>
+<%end%>

@@ -1,0 +1,8 @@
+<%=render 'shared/errors', obj: @author%>
+
+<h1>Edit the author</h1>
+<%=form_with(model: @author, local: true) do |f|%>
+  <%=f.label :Author_name%>
+  <%=f.text_field :author%>
+  <%=f.submit%>
+<%end%>

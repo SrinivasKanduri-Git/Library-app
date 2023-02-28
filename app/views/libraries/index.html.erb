@@ -1,0 +1,6 @@
+<h1> Available libraries.</h1>
+<%@libraries.each do |lib|%>
+  <ul>
+    <li><%= link_to lib.lib_name, library_path(lib)%></li>
+  </ul>
+<% end %>

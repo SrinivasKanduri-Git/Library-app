@@ -1,0 +1,9 @@
+<%= render 'shared/errors', obj: @region %>
+<h1><u>Adding region:</u></h1>
+<%=form_with(model: @region, local: true) do |f|%>
+  <%=f.label :region%>
+  <%=f.text_field :region%>
+  <%=f.label(:Select_a_company)%>
+  <%=f.collection_select :company_id, Company.order(:id),:id,:company_name, include_blank: "-none-"%>
+  <%=f.submit%>
+<%end%>

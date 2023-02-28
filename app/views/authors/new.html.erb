@@ -1,0 +1,7 @@
+<%= render 'shared/errors', obj: @author %>
+<h1>New Author registration:</h1>
+<%=form_with(model: @author, local: true) do |f|%>
+  <%=f.label :Author_name%>
+  <%=f.text_field :author%>
+  <%=f.submit%>
+<%end%>

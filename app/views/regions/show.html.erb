@@ -1,0 +1,15 @@
+<h1>
+  Bradley libraries region:
+  <%=@region.region%></br>
+  Available Locations:
+  <% @region.locations.each do |loc|%>
+  <ul>
+    <li><%=link_to loc.location, location_path(loc)%></li></br>
+  </ul>
+  <%end%>
+  <%= link_to 'Add new location', new_location_path(region_id: @region.id)%>
+</h1>
+<h2>
+  <%= link_to 'edit the region', edit_region_path(@region)%> |
+  <%=link_to 'delete the region', region_path(@region), data: {turbo_method: :delete, turbo_confirm: "Are you sure, this action will delete all the locations and libraries in this region."}%>
+</h2>

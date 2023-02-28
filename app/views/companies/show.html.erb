@@ -1,0 +1,15 @@
+<h1><u>Company details:</u></h1>
+<ul>
+  <li>Company name:<%=@company.company_name%></li>
+  <li>Established on:<%=@company.established_on%></li>
+  <li><u>Established in:</u></li>
+  <%@company.regions.each do |reg|%>
+      => <%=link_to reg.region, region_path(reg)%></br>
+  <%end%>
+</ul>
+
+<h2>
+  <p><%=link_to 'Add a library', new_library_path(@company.id)%></p></br>
+  <%=link_to 'Edit company details', edit_company_path(@company)%> |
+  <%=link_to 'Delete this company', company_path(@company), data: {turbo_method: :delete, turbo_confirm: "Are you sure? this action will delete all of the company's information."} %> 
+</h2>

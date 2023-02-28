@@ -1,0 +1,16 @@
+<h1>
+  <u>Location details:</u></br>
+  name: <%=@location.location%></br>
+    <%if @location.libraries.any?%>
+    libraries:
+      <%@location.libraries.each do |lib|%>
+        <ul>
+          <li><%=link_to lib.lib_name, library_path(lib)%></li></br>
+        </ul>
+      <% end %>
+    <%else%>
+      <p> No libraries in this location </p>
+    <% end %>
+  <%=link_to 'Edit location', edit_location_path%> |
+  <%= link_to 'delete location', location_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure, this action will also delete the libraries associated with it."}%>
+</h1>

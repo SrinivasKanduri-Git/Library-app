@@ -1,0 +1,29 @@
+<%=render 'shared/errors', obj: @book%>
+<h1><u>Adding new book:</u></h1>
+<%=form_with(model: @book, local: true) do |f|%>
+<ul style="list-style: none;">
+  <li><%=f.label :title%>
+  <%=f.text_field :title%></li></br>
+  <li><%=f.label :summary%>
+  <%=f.text_area :summary%></li></br>
+  <li><%=f.label :Total_pages%>
+  <%=f.text_field :no_of_pages%></li></br>
+  <li><%=f.label :Published_on%>
+  <%=f.date_field :publication_date%></li></br>
+  <li><%= f.label :Availability%></li></br>
+  <li><%=f.radio_button(:availability, "true")%>
+  <%=f.label(:Availability, "Yes")%></li>
+  <li><%=f.radio_button(:availability, "false")%>
+  <%=f.label(:Availability, "No")%></li></br>
+  <li><%=f.label("Choose author for the book:")%>
+  <%= f.collection_select :author_id, Author.order(:author),:id,:author, include_blank: "-none-"%></li></br>
+  <%if @library == Library.all%>
+    <li><%=f.label("Select a library to add the book:")%>
+    <%= f.collection_select :library_id, Library.order(:lib_name),:id,:lib_name, include_blank: "-none-"%></li></br>
+  <%else%>
+    <%=f.hidden_field :library_id, value: params[:library_id]%>
+  <% end %>
+  <li><%=f.submit%></li>
+</ul>
+<%end%>
+<h2>couldn't find the author you're looking for, <%=link_to 'Add new author here!', new_author_path%></h2>
