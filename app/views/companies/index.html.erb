@@ -3,13 +3,31 @@
     <%= link_to 'Our libraries', libraries_path%></p>
   List of available companies:
 </h1>
-<%@companies.each do |comp|%>
-  <ul>
-    <li><strong><%=link_to comp.company_name, company_path(comp)%></strong></li>
-  </ul>
-<%end%>
+<table class="container table table-bordered">
+  <thead>
+    <tr>
+      <td><u><b>Company name</b></u></td>
+      <td><u><b>Established on</b></u></td>
+      <td><u><b>Actions</b></u></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@companies.each do |company|%>
+      <tr id="company<%=company.id%>">
+        <td><%=company.company_name%></td>
+        <td><%=company.established_on%></td>
+        <td>
+          <%=link_to "View", company, class: "btn btn-info"%>
+          <%=link_to "Edit", edit_company_path(company), class: "btn btn-warning"%>
+          <%=link_to "Delete", company, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <h2>
-  <%=link_to 'Add a new company', new_company_path%> |
+  <%=link_to 'Add a new company', new_company_path, data: {controller: 'company-modal'}%> |
   <%=link_to 'Add new author', new_author_path%> |
   <%=link_to 'Add new book', new_book_path%> |
   <%=link_to 'Add new region', new_region_path%>

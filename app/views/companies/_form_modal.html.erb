@@ -1,0 +1,15 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" 
+    aria-hidden="true", data-controller="bs-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add new company</h5>
+                </div>
+                <div>
+                    <%=render 'form', company: company%>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

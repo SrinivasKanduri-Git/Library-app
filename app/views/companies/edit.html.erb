@@ -2,11 +2,5 @@
 
 <h1>Editing company details:</h1>
 <ul style="list-style: none;">
-  <%=form_with(model: @company, local: true) do |f|%>
-    <li><%=f.label :company_name%>
-    <%=f.text_field :company_name%></li></br>
-    <li><%=f.label :Established_on%>
-    <%=f.date_field :established_on%></li></br>
-    <%=f.submit%>
-  <% end %>
+  <%= render 'form', company: @company%>
 </ul>
